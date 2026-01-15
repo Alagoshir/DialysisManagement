@@ -1,0 +1,474 @@
+﻿================================================================================
+  DIALYSIS MANAGEMENT SYSTEM - CHECKLIST DEPLOYMENT
+================================================================================
+
+Versione: 1.0.0
+Data: 14/01/2026
+
+================================================================================
+FASE 1: PREPARAZIONE AMBIENTE SVILUPPO
+================================================================================
+
+□ 1.1 Visual Studio 2022 installato
+      - Enterprise/Professional/Community Edition
+      - Workload: .NET Desktop Development
+      - Workload: Data Storage and Processing
+
+□ 1.2 .NET Framework 4.8 Developer Pack installato
+      URL: https://dotnet.microsoft.com/download/dotnet-framework/net48
+
+□ 1.3 NuGet Package Manager aggiornato
+      - Tools → Extensions and Updates
+      - Verificare ultima versione
+
+□ 1.4 MySQL Server installato (per sviluppo)
+      - MySQL Community Server 8.0.33 o superiore
+      - MySQL Workbench (opzionale)
+
+□ 1.5 Inno Setup 6 installato (per creare installer)
+      URL: https://jrsoftware.org/isdl.php
+
+================================================================================
+FASE 2: CREAZIONE PROGETTO
+================================================================================
+
+□ 2.1 Creare nuovo progetto Windows Forms App (.NET Framework)
+      - Nome: DialysisManagement
+      - Framework: .NET Framework 4.8
+      - Percorso: C:\Projects\DialysisManagement\
+
+□ 2.2 Creare struttura cartelle:
+      □ Models/
+      □ Data/
+      □ Services/
+      □ Repositories/
+      □ Views/
+      □ Utilities/
+      □ Resources/
+      □ Database/
+        □ MySQL/ (per MySQL portable)
+        □ Scripts/
+      □ Docs/
+      □ Installer/
+
+□ 2.3 Copiare tutti i file .cs forniti nelle rispettive cartelle
+
+□ 2.4 Aggiungere file di configurazione:
+      □ app.config
+      □ appsettings.json
+      □ nlog.config
+
+================================================================================
+FASE 3: INSTALLAZIONE NUGET PACKAGES
+================================================================================
+
+□ 3.1 Aprire Package Manager Console
+      (Tools → NuGet Package Manager → Package Manager Console)
+
+□ 3.2 Installare packages CORE (obbligatori):
+      □ MySql.Data
+      □ Dapper
+      □ MySqlBackup.NET
+      □ Microsoft.Extensions.DependencyInjection
+      □ Microsoft.Extensions.Logging
+      □ NLog
+      □ NLog.Extensions.Logging
+      □ BCrypt.Net-Next
+      □ Newtonsoft.Json
+
+□ 3.3 Installare packages REPORTING:
+      □ iTextSharp (o alternativa QuestPDF)
+      □ ClosedXML
+      □ CsvHelper
+
+□ 3.4 Installare packages UTILITY:
+      □ QRCoder
+      □ AutoMapper (opzionale)
+
+□ 3.5 Installare packages UI:
+      □ LiveChartsCore.SkiaSharpView.WinForms
+      □ Alternativa UI framework (MetroFramework/MaterialSkin)
+
+□ 3.6 Installare packages CLOUD (opzionali):
+      □ Google.Apis.Drive.v3
+      □ Microsoft.Graph
+      □ Dropbox.Api
+      □ FluentFTP
+      □ SSH.NET
+
+□ 3.7 Verificare installazione:
+      - Get-Package
+      - Nessun errore/warning
+
+================================================================================
+FASE 4: CONFIGURAZIONE DATABASE
+================================================================================
+
+□ 4.1 Preparare MySQL Portable
+      □ Scaricare MySQL Portable da mysql.com
+      □ Estrarre in: DialysisManagement\Database\MySQL\
+      □ Creare file my.ini con configurazioni
+      □ Testare avvio: mysqld.exe --console
+
+□ 4.2 Creare database
+      □ Eseguire script: 01_CreateDatabase.sql
+      □ Eseguire script: 02_InitialData.sql
+      □ Verificare tabelle create (18 tabelle)
+      □ Verificare utente admin creato
+
+□ 4.3 Testare connessione
+      □ Da MySQL Workbench
+      □ Da application (test connection)
+
+□ 4.4 Configurare connection string
+      □ In app.config
+      □ In appsettings.json
+      □ Testare encryption key
+
+================================================================================
+FASE 5: BUILD E TEST
+================================================================================
+
+□ 5.1 Compilare soluzione
+      □ Build → Build Solution (Ctrl+Shift+B)
+      □ 0 errors, 0 warnings
+      □ Verificare output bin\Debug\
+
+□ 5.2 Risolvere errori compilazione comuni:
+      □ Using statements mancanti
+      □ Namespace non trovati
+      □ Interfacce non implementate
+      □ Type mismatch
+
+□ 5.3 Test Login
+      □ Avviare applicazione (F5)
+      □ Login con admin/Admin@2026
+      □ Verificare accesso dashboard
+
+□ 5.4 Test CRUD base:
+      □ Creare paziente di test
+      □ Modificare paziente
+      □ Visualizzare lista pazienti
+      □ NON eliminare (test soft delete)
+
+□ 5.5 Test Seduta Dialitica:
+      □ Programmare seduta
+      □ Inserire parametri pre/intra/post
+      □ Completare seduta
+      □ Verificare calcolo Kt/V
+
+□ 5.6 Test Esami:
+      □ Inserire esami laboratorio
+      □ Verificare alert valori fuori range
+      □ Upload file allegato
+      □ Download file allegato
+
+□ 5.7 Test Backup:
+      □ Creare backup manuale
+      □ Verificare file backup creato
+      □ Ripristinare backup
+      □ Verificare dati ripristinati
+
+□ 5.8 Test Report:
+      □ Generare report paziente PDF
+      □ Export CSV
+      □ Export Excel
+      □ Verificare contenuto
+
+□ 5.9 Test Sicurezza:
+      □ Logout automatico dopo timeout
+      □ Blocco account dopo 5 tentativi falliti
+      □ Cambio password
+      □ Verifica audit log
+
+================================================================================
+FASE 6: BUILD RELEASE
+================================================================================
+
+□ 6.1 Configurazione Release
+      □ Build → Configuration Manager
+      □ Selezionare "Release"
+      □ Platform: x64 (o Any CPU)
+
+□ 6.2 Ottimizzazioni Release
+      □ Rimuovere codice debug
+      □ Ottimizzare query
+      □ Verificare nlog.config per produzione
+
+□ 6.3 Build Release
+      □ Clean Solution
+      □ Rebuild Solution
+      □ Verificare output bin\Release\
+
+□ 6.4 Test build Release
+      □ Copiare bin\Release\ in cartella test
+      □ Copiare Database\
+      □ Testare esecuzione standalone
+      □ Verificare tutte le funzionalità
+
+================================================================================
+FASE 7: CREAZIONE INSTALLER
+================================================================================
+
+□ 7.1 Preparare file installer
+      □ Copiare bin\Release\ in Installer\Files\
+      □ Copiare Database\ completo
+      □ Copiare Docs\
+      □ Creare LICENSE.txt
+      □ Creare README_INSTALL.txt
+
+□ 7.2 Configurare Inno Setup
+      □ Aprire setup.iss in Inno Setup
+      □ Verificare percorsi file
+      □ Verificare versione (1.0.0)
+      □ Personalizzare icone/immagini
+
+□ 7.3 Compilare installer
+      □ Build → Compile
+      □ Verificare nessun errore
+      □ Output: DialysisManagement_Setup_v1.0.0.exe
+
+□ 7.4 Test installer
+      □ Eseguire installer in macchina virtuale pulita
+      □ Verificare installazione componenti
+      □ Verificare creazione database
+      □ Verificare servizio MySQL
+      □ Testare applicazione installata
+
+□ 7.5 Firmare installer (opzionale)
+      □ Ottenere certificato code signing
+      □ Firmare .exe con signtool
+      □ Verificare firma valida
+
+================================================================================
+FASE 8: DOCUMENTAZIONE
+================================================================================
+
+□ 8.1 Documentazione utente
+      □ Manuale_Utente.pdf completo
+      □ Guide rapide per funzioni chiave
+      □ Video tutorial (opzionale)
+      □ FAQ aggiornate
+
+□ 8.2 Documentazione tecnica
+      □ Documentazione API/Services
+      □ Schema database (ER diagram)
+      □ Architettura applicazione
+      □ Guida sviluppatore
+
+□ 8.3 Documentazione amministratore
+      □ Guida installazione
+      □ Configurazione avanzata
+      □ Backup e disaster recovery
+      □ Troubleshooting
+
+□ 8.4 Note di rilascio
+      □ Release notes v1.0.0
+      □ Known issues
+      □ Roadmap future versioni
+
+================================================================================
+FASE 9: TEST PRE-DEPLOYMENT
+================================================================================
+
+□ 9.1 Test Installazione
+      Testare su:
+      □ Windows 10 Pro (64-bit)
+      □ Windows 11 Pro (64-bit)
+      □ Con .NET 4.8 già installato
+      □ Senza .NET 4.8 (test download)
+      □ Con antivirus attivo
+      □ Con UAC attivo
+
+□ 9.2 Test Funzionalità Complete
+      □ Tutti i CRUD completati
+      □ Tutti i report generati
+      □ Tutti gli export funzionanti
+      □ Backup/Restore OK
+      □ Import dati OK (se applicabile)
+
+□ 9.3 Test Prestazioni
+      □ Database con 100 pazienti
+      □ Database con 1000 sedute
+      □ Tempo risposta query < 2s
+      □ Backup database < 5 minuti
+      □ Avvio applicazione < 10s
+
+□ 9.4 Test Sicurezza
+      □ Penetration test base
+      □ SQL injection prevention
+      □ XSS prevention (se web components)
+      □ File upload validation
+      □ Audit log completo
+
+□ 9.5 Test Usabilità
+      □ Test con utenti finali (medici/infermieri)
+      □ Feedback raccolto
+      □ UI intuitiva
+      □ Workflow naturale
+
+□ 9.6 Test Compatibilità
+      □ Risoluzione 1366x768
+      □ Risoluzione 1920x1080
+      □ Monitor multipli
+      □ DPI scaling (125%, 150%)
+
+================================================================================
+FASE 10: DEPLOYMENT PRODUZIONE
+================================================================================
+
+□ 10.1 Preparazione ambiente produzione
+      □ Server/PC destinazione verificato
+      □ Requisiti sistema soddisfatti
+      □ Backup ambiente esistente (se upgrade)
+      □ Downtime pianificato
+
+□ 10.2 Backup pre-deployment
+      □ Backup completo sistema esistente
+      □ Export dati se migrazione
+      □ Backup configurazioni
+      □ Piano rollback definito
+
+□ 10.3 Installazione
+      □ Eseguire installer come Admin
+      □ Verificare installazione componenti
+      □ Verificare creazione servizio MySQL
+      □ Verificare database inizializzato
+
+□ 10.4 Configurazione post-installazione
+      □ Modificare password admin di default
+      □ Configurare backup automatico
+      □ Configurare email notifications (se usate)
+      □ Configurare cloud storage (se usato)
+      □ Importare dati da sistema precedente
+
+□ 10.5 Test post-deployment
+      □ Test login tutti gli utenti
+      □ Test tutte le funzionalità core
+      □ Test backup/restore
+      □ Test report
+      □ Verificare performance
+
+□ 10.6 Formazione utenti
+      □ Sessione formazione amministratori
+      □ Sessione formazione medici
+      □ Sessione formazione infermieri
+      □ Distribuzione manuali utente
+      □ Hotline supporto attivata
+
+□ 10.7 Go-Live
+      □ Comunicazione go-live a tutti utenti
+      □ Monitoraggio primo giorno
+      □ Supporto on-site disponibile
+      □ Raccolta feedback
+
+□ 10.8 Post Go-Live
+      □ Monitoraggio log errori
+      □ Raccolta issues/bug
+      □ Supporto utenti
+      □ Pianificazione hotfix se necessari
+
+================================================================================
+FASE 11: MANUTENZIONE
+================================================================================
+
+□ 11.1 Setup monitoring
+      □ Monitoraggio spazio disco
+      □ Monitoraggio servizio MySQL
+      □ Monitoraggio log errori
+      □ Alert automatici configurati
+
+□ 11.2 Backup schedule
+      □ Backup automatico giornaliero verificato
+      □ Backup cloud configurato
+      □ Test restore periodici (mensile)
+      □ Retention policy applicata
+
+□ 11.3 Aggiornamenti
+      □ Piano aggiornamenti Windows
+      □ Piano aggiornamenti .NET
+      □ Piano aggiornamenti MySQL
+      □ Piano update applicazione
+
+□ 11.4 Supporto
+      □ Canali supporto definiti
+      □ SLA supporto definito
+      □ Ticketing system setup
+      □ Knowledge base creata
+
+================================================================================
+FASE 12: CHECKLIST FINALE
+================================================================================
+
+PRE-DEPLOYMENT:
+□ Codice completo e testato
+□ Build Release senza errori
+□ Installer creato e testato
+□ Documentazione completa
+□ Team formato
+□ Backup plan definito
+□ Rollback plan definito
+
+DEPLOYMENT:
+□ Ambiente produzione pronto
+□ Backup pre-deployment eseguito
+□ Installazione completata
+□ Configurazione completata
+□ Test post-deployment OK
+□ Utenti formati
+
+POST-DEPLOYMENT:
+□ Monitoring attivo
+□ Supporto disponibile
+□ Backup automatici funzionanti
+□ Performance monitorate
+□ Feedback raccolto
+
+================================================================================
+CONTATTI SUPPORTO
+================================================================================
+
+Supporto Tecnico:
+Email: support@dialisi.it
+Tel: 081-1234567
+Orari: Lun-Ven 9:00-18:00
+
+Emergenze (fuori orario):
+Tel: 340-1234567
+
+================================================================================
+FIRMA APPROVAZIONI
+================================================================================
+
+Sviluppo Completato:
+Nome: _________________________  Data: __/__/____  Firma: ____________
+
+Testing Completato:
+Nome: _________________________  Data: __/__/____  Firma: ____________
+
+Documentazione Approvata:
+Nome: _________________________  Data: __/__/____  Firma: ____________
+
+Deployment Autorizzato:
+Nome: _________________________  Data: __/__/____  Firma: ____________
+
+Go-Live Confermato:
+Nome: _________________________  Data: __/__/____  Firma: ____________
+
+================================================================================
+NOTE FINALI
+================================================================================
+
+Questo software è stato sviluppato secondo le best practices per applicazioni
+medicali in ambito ospedaliero pubblico italiano.
+
+Conforme a:
+- GDPR (Regolamento UE 2016/679)
+- Linee guida AgID
+- Standard Regione Campania per dialisi
+
+Versione: 1.0.0
+Build Date: 14/01/2026
+© 2026 Centro Dialisi - Tutti i diritti riservati
+
+================================================================================

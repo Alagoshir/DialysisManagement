@@ -1,0 +1,326 @@
+﻿================================================================================
+  DIALYSIS MANAGEMENT SYSTEM - NUGET PACKAGES
+================================================================================
+
+Versione: 1.0.0
+Data: 14/01/2026
+
+IMPORTANTE: Installare packages nell'ordine indicato per evitare conflitti
+           di dipendenze.
+
+================================================================================
+INSTALLAZIONE RAPIDA - TUTTI I PACKAGES
+================================================================================
+
+Aprire Package Manager Console in Visual Studio e eseguire:
+
+Install-Package MySql.Data -Version 8.0.33
+Install-Package Dapper -Version 2.1.24
+Install-Package MySqlBackup.NET -Version 2.3.6
+Install-Package Newtonsoft.Json -Version 13.0.3
+Install-Package Microsoft.Extensions.DependencyInjection -Version 8.0.0
+Install-Package Microsoft.Extensions.Logging -Version 8.0.0
+Install-Package NLog -Version 5.2.8
+Install-Package NLog.Extensions.Logging -Version 5.3.8
+Install-Package BCrypt.Net-Next -Version 4.0.3
+Install-Package iTextSharp -Version 5.5.13.3
+Install-Package ClosedXML -Version 0.102.1
+Install-Package CsvHelper -Version 30.0.1
+Install-Package AutoMapper -Version 12.0.1
+Install-Package QRCoder -Version 1.4.3
+Install-Package LiveChartsCore.SkiaSharpView.WinForms -Version 2.0.0-rc2
+Install-Package Google.Apis.Drive.v3 -Version 1.62.0.3084
+Install-Package Microsoft.Graph -Version 5.40.0
+Install-Package Dropbox.Api -Version 6.36.0
+Install-Package FluentFTP -Version 48.0.3
+Install-Package SSH.NET -Version 2023.0.0
+Install-Package System.Data.SqlClient -Version 4.8.5
+
+================================================================================
+PACKAGES PER CATEGORIA
+================================================================================
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 1. DATABASE E DATA ACCESS                                               │
+└─────────────────────────────────────────────────────────────────────────┘
+
+1.1 MySQL Provider
+Package: MySql.Data
+Version: 8.0.33
+Command: Install-Package MySql.Data -Version 8.0.33
+Utilizzo: Connector MySQL per .NET, gestione connessioni database
+
+1.2 Dapper ORM
+Package: Dapper
+Version: 2.1.24
+Command: Install-Package Dapper -Version 2.1.24
+Utilizzo: Micro-ORM per query SQL performanti
+
+1.3 MySQL Backup
+Package: MySqlBackup.NET
+Version: 2.3.6
+Command: Install-Package MySqlBackup.NET -Version 2.3.6
+Utilizzo: Backup e restore database MySQL
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 2. DEPENDENCY INJECTION E LOGGING                                       │
+└─────────────────────────────────────────────────────────────────────────┘
+
+2.1 Microsoft DI Container
+Package: Microsoft.Extensions.DependencyInjection
+Version: 8.0.0
+Command: Install-Package Microsoft.Extensions.DependencyInjection -Version 8.0.0
+Utilizzo: Dependency Injection container
+
+2.2 Microsoft Logging
+Package: Microsoft.Extensions.Logging
+Version: 8.0.0
+Command: Install-Package Microsoft.Extensions.Logging -Version 8.0.0
+Utilizzo: Abstraction layer per logging
+
+2.3 NLog
+Package: NLog
+Version: 5.2.8
+Command: Install-Package NLog -Version 5.2.8
+Utilizzo: Framework logging avanzato
+
+2.4 NLog Extensions
+Package: NLog.Extensions.Logging
+Version: 5.3.8
+Command: Install-Package NLog.Extensions.Logging -Version 5.3.8
+Utilizzo: Integrazione NLog con Microsoft.Extensions.Logging
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 3. SICUREZZA E CRITTOGRAFIA                                             │
+└─────────────────────────────────────────────────────────────────────────┘
+
+3.1 BCrypt Password Hashing
+Package: BCrypt.Net-Next
+Version: 4.0.3
+Command: Install-Package BCrypt.Net-Next -Version 4.0.3
+Utilizzo: Hash password sicuro con BCrypt
+
+NOTA: System.Security.Cryptography è built-in .NET per AES-256
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 4. REPORTING E EXPORT                                                   │
+└─────────────────────────────────────────────────────────────────────────┘
+
+4.1 iTextSharp (PDF)
+Package: iTextSharp
+Version: 5.5.13.3
+Command: Install-Package iTextSharp -Version 5.5.13.3
+Utilizzo: Generazione PDF per report
+LICENZA: AGPL (open source) o commerciale
+NOTA: Per uso commerciale valutare licenza o alternativa (QuestPDF)
+
+4.2 ClosedXML (Excel)
+Package: ClosedXML
+Version: 0.102.1
+Command: Install-Package ClosedXML -Version 0.102.1
+Utilizzo: Export Excel senza Office installato
+
+4.3 CsvHelper
+Package: CsvHelper
+Version: 30.0.1
+Command: Install-Package CsvHelper -Version 30.0.1
+Utilizzo: Import/Export CSV
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 5. UTILITIES                                                            │
+└─────────────────────────────────────────────────────────────────────────┘
+
+5.1 Newtonsoft.Json
+Package: Newtonsoft.Json
+Version: 13.0.3
+Command: Install-Package Newtonsoft.Json -Version 13.0.3
+Utilizzo: Serializzazione JSON
+
+5.2 AutoMapper
+Package: AutoMapper
+Version: 12.0.1
+Command: Install-Package AutoMapper -Version 12.0.1
+Utilizzo: Mapping automatico oggetti (opzionale)
+
+5.3 QRCoder
+Package: QRCoder
+Version: 1.4.3
+Command: Install-Package QRCoder -Version 1.4.3
+Utilizzo: Generazione QR code per pazienti
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 6. UI E GRAFICI                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+6.1 LiveCharts2 (WinForms)
+Package: LiveChartsCore.SkiaSharpView.WinForms
+Version: 2.0.0-rc2
+Command: Install-Package LiveChartsCore.SkiaSharpView.WinForms -Version 2.0.0-rc2
+Utilizzo: Grafici interattivi trend esami
+
+ALTERNATIVA (se problemi):
+Package: ScottPlot.WinForms
+Version: 4.1.71
+Command: Install-Package ScottPlot.WinForms -Version 4.1.71
+
+6.2 CuoreUI (UI Components)
+NOTA: CuoreUI.Winforms potrebbe non essere disponibile su NuGet pubblico.
+      Alternative:
+      - MetroFramework (Install-Package MetroFramework -Version 1.2.0.3)
+      - MaterialSkin (Install-Package MaterialSkin.2 -Version 2.1.0)
+      - Creare custom controls
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 7. CLOUD STORAGE                                                        │
+└─────────────────────────────────────────────────────────────────────────┘
+
+7.1 Google Drive API
+Package: Google.Apis.Drive.v3
+Version: 1.62.0.3084
+Command: Install-Package Google.Apis.Drive.v3 -Version 1.62.0.3084
+Utilizzo: Upload backup su Google Drive
+
+7.2 Microsoft Graph (OneDrive)
+Package: Microsoft.Graph
+Version: 5.40.0
+Command: Install-Package Microsoft.Graph -Version 5.40.0
+Utilizzo: Upload backup su OneDrive
+
+7.3 Dropbox API
+Package: Dropbox.Api
+Version: 6.36.0
+Command: Install-Package Dropbox.Api -Version 6.36.0
+Utilizzo: Upload backup su Dropbox
+
+7.4 FluentFTP
+Package: FluentFTP
+Version: 48.0.3
+Command: Install-Package FluentFTP -Version 48.0.3
+Utilizzo: Upload backup via FTP
+
+7.5 SSH.NET
+Package: SSH.NET
+Version: 2023.0.0
+Command: Install-Package SSH.NET -Version 2023.0.0
+Utilizzo: Upload backup via SFTP
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 8. ALTRI (OPZIONALI)                                                    │
+└─────────────────────────────────────────────────────────────────────────┘
+
+8.1 System.Data.SqlClient (se necessario SQL Server)
+Package: System.Data.SqlClient
+Version: 4.8.5
+Command: Install-Package System.Data.SqlClient -Version 4.8.5
+
+8.2 EPPlus (alternativa a ClosedXML)
+Package: EPPlus
+Version: 7.0.3
+Command: Install-Package EPPlus -Version 7.0.3
+LICENZA: Polyform Noncommercial o commerciale
+
+================================================================================
+SCRIPT COMPLETO INSTALLAZIONE
+================================================================================
+
+Copiare e incollare nel Package Manager Console:
+
+# Core Database
+Install-Package MySql.Data -Version 8.0.33
+Install-Package Dapper -Version 2.1.24
+Install-Package MySqlBackup.NET -Version 2.3.6
+
+# Dependency Injection & Logging
+Install-Package Microsoft.Extensions.DependencyInjection -Version 8.0.0
+Install-Package Microsoft.Extensions.Logging -Version 8.0.0
+Install-Package NLog -Version 5.2.8
+Install-Package NLog.Extensions.Logging -Version 5.3.8
+
+# Security
+Install-Package BCrypt.Net-Next -Version 4.0.3
+
+# Reporting
+Install-Package iTextSharp -Version 5.5.13.3
+Install-Package ClosedXML -Version 0.102.1
+Install-Package CsvHelper -Version 30.0.1
+
+# Utilities
+Install-Package Newtonsoft.Json -Version 13.0.3
+Install-Package AutoMapper -Version 12.0.1
+Install-Package QRCoder -Version 1.4.3
+
+# Charts
+Install-Package LiveChartsCore.SkiaSharpView.WinForms -Version 2.0.0-rc2
+
+# Cloud Storage (installare solo quelli necessari)
+Install-Package Google.Apis.Drive.v3 -Version 1.62.0.3084
+Install-Package Microsoft.Graph -Version 5.40.0
+Install-Package Dropbox.Api -Version 6.36.0
+Install-Package FluentFTP -Version 48.0.3
+Install-Package SSH.NET -Version 2023.0.0
+
+================================================================================
+VERIFICA INSTALLAZIONE
+================================================================================
+
+1. Aprire Package Manager Console
+2. Eseguire: Get-Package
+3. Verificare che tutti i package siano elencati
+4. Verificare eventuali warning/errori
+5. Se conflitti: Update-Package -Reinstall
+
+================================================================================
+DIMENSIONI TOTALI APPROSSIMATIVE
+================================================================================
+
+Packages totali: ~200 MB
+Output compilato: ~50 MB
+Database MySQL: ~150 MB
+TOTALE: ~400 MB
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+ERRORE: "Package not found"
+SOLUZIONE: Verificare connessione internet, aggiornare NuGet sources
+
+ERRORE: "Unable to resolve dependency"
+SOLUZIONE: Installare packages nell'ordine specificato
+
+ERRORE: "Conflicting versions"
+SOLUZIONE: Update-Package [PackageName] -Version [VersionNumber]
+
+ERRORE: "iTextSharp license"
+SOLUZIONE: Per uso commerciale valutare:
+           - Acquisto licenza iTextSharp
+           - Alternativa: QuestPDF (Install-Package QuestPDF -Version 2023.12.0)
+
+================================================================================
+NOTE LICENZE
+================================================================================
+
+⚠️ ATTENZIONE LICENZE SOFTWARE:
+
+OPEN SOURCE (Uso libero):
+- MySql.Data (GPL + Commercial)
+- Dapper (Apache 2.0)
+- NLog (BSD)
+- BCrypt.Net-Next (MIT)
+- Newtonsoft.Json (MIT)
+- CsvHelper (MS-PL/Apache 2.0)
+- FluentFTP (MIT)
+
+DUAL LICENSE (Verificare uso):
+- iTextSharp (AGPL o Commercial) ⚠️
+- ClosedXML (MIT)
+- EPPlus (Polyform Noncommercial o Commercial) ⚠️
+
+COMMERCIAL:
+- Google/Microsoft/Dropbox APIs (Gratuito fino a limiti uso)
+
+Per uso in ospedale pubblico, la maggior parte sono compatibili.
+Per iTextSharp: uso interno ospedaliero dovrebbe rientrare in AGPL.
+Consultare legale per sicurezza.
+
+================================================================================
